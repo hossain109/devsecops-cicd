@@ -68,6 +68,7 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+      - name: Verify credentials
         run: |
           echo "Username: ${{ vars.DOCKERHUB_USERNAME }}"
           echo "Token exists: ${{ secrets.DOCKERHUB_TOKEN != '' }}"
