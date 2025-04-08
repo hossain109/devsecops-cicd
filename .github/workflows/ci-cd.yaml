@@ -68,6 +68,13 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+      - name: Verify credentials
+        run: |
+          echo "Username: ${{ vars.DOCKERHUB_USERNAME }}"
+          echo "Token exists: ${{ secrets.DOCKERHUB_TOKEN != '' }}"
+          echo "Trying to login..."
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ vars.DOCKERHUB_USERNAME }} --password-stdin
+          
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       -
@@ -79,3 +86,4 @@ jobs:
         with:
           push: true
           tags: sohrab109/tic-toc-toe:latest
+      
