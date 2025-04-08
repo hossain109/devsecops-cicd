@@ -1,1 +1,9 @@
 name: implementation CICD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
