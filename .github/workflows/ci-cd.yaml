@@ -51,10 +51,10 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: tictoc-artifact
-          path: dist/ # or path/to/artifact
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: tictoc-artifact
+      #     path: dist/ # or path/to/artifact
 
   docker:
     runs-on: ubuntu-latest
