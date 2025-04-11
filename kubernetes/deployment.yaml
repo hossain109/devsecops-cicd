@@ -10,14 +10,14 @@ spec:
     matchLabels:
       app: tic-tac-toe
   template:
-    labels:
-      app: tic-tac-toe
-  spec:
-    containers:
-    - name: tic-tac-toe
-      image: sohrab109/app:latest           
-      #it will be automatically updated by cicd pipeline
-      imagePullPolicy: Always
-      ports:
-        - containerPort: 80
+    metadata:
+      labels:
+        app: tic-tac-toe
+    spec:
+      containers:
+      - name: tic-tac-toe
+        image: sohrab109/app:latest           
+        #it will be automatically updated by cicd pipeline
+        ports:
+          - containerPort: 80
       
