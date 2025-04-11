@@ -17,6 +17,7 @@ spec:
     - name: tic-tac-toe
       image: sohrab109/app:latest           
       #it will be automatically updated by cicd pipeline
+      imagePullPolicy: Always
       ports:
         - containerPort: 80
       
