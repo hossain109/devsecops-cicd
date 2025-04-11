@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'kubernetes/deployment.yaml'  # Ignore changes to this file to prevent loops
   pull_request:
     branches:
       - main
@@ -81,4 +83,41 @@ jobs:
           context: .
           push: true
           tags: sohrab109/app:latest
+
+  # update-k8s:
+  #   name: Update Kubernetes Deployment
+  #   runs-on: ubuntu-latest
+  #   needs: [docker]
+  #   env:
+  #     DOCKERHUB_IMAGE: docker.io/sohrab109/app
+  #     DEPLOYMENT_NAME: my-deployment
+  #     CONTAINER_NAME: my-container
+  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         token: ${{ secrets.TOKEN }}
+
+  #     - name: login to dockerhub
+  #       uses: docker/login-action@v3
+  #       with:
+  #         username: ${{ vars.DOCKERHUB_USERNAME }}
+  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  #         # Define the new image with tag
+  #         NEW_IMAGE="${DOCKER_USERNAME}/${DOCKER_APP}:${IMAGE_TAG}"
+          
+  #         # Update the deployment file directly
+  #         sed -i "s|image: ${REGISTRY}/.*|image: ${NEW_IMAGE}|g" kubernetes/deployment.yaml
+          
+  #         # Verify the change
+  #         echo "Updated deployment to use image: ${NEW_IMAGE}"
+  #         grep -A 1 "image:" kubernetes/deployment.yaml
+      
+  #     - name: Commit and push changes
+  #       run: |
+  #         git add kubernetes/deployment.yaml
+  #         git commit -m "Update Kubernetes deployment with new image tag: latest [skip ci]" || echo "No changes to commit"
+  #         git push
       
