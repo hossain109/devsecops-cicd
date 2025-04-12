@@ -105,7 +105,7 @@ jobs:
           REGISTRY: docker.io
         run: |
           # Define the new image with tag
-          NEW_IMAGE="${REGISTRY}/${GITHUB_REPOSITORY}:${IMAGE_TAG}"
+          NEW_IMAGE="${REGISTRY}/${DOCKERHUB_REPOSITORY}:${IMAGE_TAG}"
  
           # Update the deployment file directly
           sed -i "s|image: ${REGISTRY}/.*|image: ${NEW_IMAGE}|g" kubernetes/deployment.yaml
