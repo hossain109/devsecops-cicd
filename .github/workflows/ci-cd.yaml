@@ -105,15 +105,15 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           run: |
             IMAGE_TAG=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
-          # Define the new image with tag
-          NEW_IMAGE="sohrab109/app:${IMAGE_TAG}"
+            # Define the new image with tag
+            NEW_IMAGE="sohrab109/app:${IMAGE_TAG}"
+            
+            # Update the deployment file directly
+            sed -i "s|image: sohrab109/.*|image: ${NEW_IMAGE}|g" kubernetes/deployment.yaml
           
-          # Update the deployment file directly
-          sed -i "s|image: sohrab109/.*|image: ${NEW_IMAGE}|g" kubernetes/deployment.yaml
-          
-          # Verify the change
-          echo "Updated deployment to use image: ${NEW_IMAGE}"
-          grep -A 1 "image:" kubernetes/deployment.yaml
+            # Verify the change
+            echo "Updated deployment to use image: ${NEW_IMAGE}"
+            grep -A 1 "image:" kubernetes/deployment.yaml
       
       - name: Commit and push changes
         run: |
