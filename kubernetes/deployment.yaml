@@ -16,8 +16,15 @@ spec:
     spec:
       containers:
       - name: tic-tac-toe
-        image: docker.io/sohrab109/app:sha-ea7258c70cde6509e1d3695fb8ad65b6331bbc6e
+        image: docker.io/sohrab109/app:sha-a1c9dd4dc7e700b851044c0974ec98bfe64128fc
         #it will be automatically updated by cicd pipeline
         ports:
           - containerPort: 80
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.2"
+              memory: "256Mi"
       
