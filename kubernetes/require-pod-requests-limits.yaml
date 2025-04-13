@@ -32,21 +32,24 @@ spec:
           containers:
           - resources:
               requests:
-                memory: "?*"
-                cpu: "?*"
+                memory: "512Mi"
+                cpu: "250m"
               limits:
-                memory: "?*"
-          =(initContainers):
+                memory: "1Gi"
+                cpu: "500m"
+          initContainers:
           - resources:
               requests:
-                memory: "?*"
-                cpu: "?*"
+                memory: "256Mi"
+                cpu: "100m"
               limits:
-                memory: "?*"
-          =(ephemeralContainers):
+                memory: "512Mi"
+                cpu: "250m"
+          ephemeralContainers:
           - resources:
               requests:
-                memory: "?*"
-                cpu: "?*"
+                memory: "256Mi"
+                cpu: "100m"
               limits:
-                memory: "?*"
+                memory: "512Mi"
+                cpu: "250m"
