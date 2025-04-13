@@ -19,7 +19,7 @@ spec:
         image: docker.io/sohrab109/app:sha-a1c9dd4dc7e700b851044c0974ec98bfe64128fc
         #it will be automatically updated by cicd pipeline
         ports:
-          - containerPort: 80
+        - containerPort: 80
         resources:
           limits:
             cpu: "0.5"
