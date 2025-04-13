@@ -79,10 +79,14 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v6
+        env:
+          IMAGE_TAG: sha-${{ github.sha }}
+          DOCKERHUB_REPOSITORY: sohrab109/app
+          REGISTRY: docker.io
         with:
           context: .
           push: true
-          tags: sohrab109/app:latest
+          tags: "${REGISTRY}/${DOCKERHUB_REPOSITORY}:${IMAGE_TAG}"
 
   update-k8s:
     name: Update Kubernetes Deployment
