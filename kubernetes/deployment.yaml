@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tic-tac-toe
-        image: docker.io/sohrab109/app:sha-e281477e5596be7ac6df4ae6e7d3e65cfae190ea
+        image: docker.io/sohrab109/app:sha-83cfc0efe88395b968187b7fe36309ee3af29e67
         #it will be automatically updated by cicd pipeline
         ports:
         - containerPort: 80
